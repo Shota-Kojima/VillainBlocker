@@ -5,7 +5,7 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => res.send('POSTでアップロードしてください。'));
+app.get('/', (req, res) => res.send('POSTでアップロードしてく。'));
 
 app.post('/', (req, res) => {
     let buffers = [];
