@@ -1,30 +1,15 @@
 'use strict';
 
-const fs = require('fs');
-const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
 
-app.get('/', (req, res) => res.send('POSTでアップロードしてく。'));
+var express = require("express");
+var app = express();
 
-app.post('/', (req, res) => {
-    let buffers = [];
-    let cnt = 0;
+// staticメソッドを利用し、指定ディレクトリ以下の静的ファイルを読み込む
+app.use("/public", express.static(__dirname + "/public"));
 
-    req.on('data', (chunk) => {
-        buffers.push(chunk);
-        console.log(++cnt);
-    });
+// routeの設定
+app.use("/", require("./routes/index.js"));
 
-    req.on('end', () => {
-        console.log(`[done] Image upload`);
-        req.rawBody = Buffer.concat(buffers);
-        //書き込み
-        fs.writeFile('./img.jpeg', req.rawBody, 'utf-8',(err) => {
-            if(err) return;
-            console.log(`[done] Image save`);
-        });
-    });
-});
 
 app.listen(PORT);
