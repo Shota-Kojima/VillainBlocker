@@ -1,19 +1,8 @@
 var router = require("express").Router();
 const fs = require('fs');
-// const multer = require('multer')
-// const storage = multer.diskStorage({
-//     destination: function (req, file, cb) {
-//       // 保存したいパス
-//       cb(null, './img.jpg')
-//     }
-//     ,
-//     filename: function (req, file, cb) {
-//       // アップロードしたときのファイル名で保存
-//       cb(null, file.originalname)
-//     }
-// })
-
-// const upload = multer({ storage: storage })
+const Request = require('request');
+const multer = require('multer')
+var upload = multer({ dest: './uploads/' });
 
 //get 
 router.get("/", (req, res) => {
@@ -22,37 +11,26 @@ router.get("/", (req, res) => {
 });
 
 //post
-router.post("/", (req, res) => {
-    
-    let buffers = [];
-    let cnt = 0;
+router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
+    // console.log(req.body);
+    var path = req.files.data[0].path;
+    var filename = req.files.data[0].filename;
+    var originalname = req.files.data[0].originalname;
+    var targetPath = './uploads/' + originalname;
+    console.log(path, filename, originalname);
 
-    req.on('data', (chunk) => {
-        buffers.push(chunk);
-        console.log(++cnt);
+    fs.rename(path, targetPath, function(err) {
+      if (err) {
+        throw err;
+      }
+      fs.unlink(path, function() {
+        if (err) {
+          throw err;
+        }
+        res.send('File uploaded to: ' + targetPath + ' - ' + req.files.data[0].size + ' bytes');
+      });
     });
-
-    req.on('end', () => {
-        console.log(`[done] Image upload`);
-        req.rawBody = Buffer.concat(buffers);
-        //書き込み
-        fs.writeFile('./img.jpg', req.rawBody, 'utf-8',(err) => {
-            if(err) return;
-            console.log(`[done] Image save`);
-        });
-    });
-});
-
-// router.post('/', upload.single('file'), function(req, res, next) {
-
-//     // POSTされた画像の情報をJSONで取得
-//     const req_file_json = JSON.stringify(req.file)
+  });
   
-//   　　　　// ***************
-//     // お好きな処理をここに
-//   　　　　// ***************
-  
-//     res.json({'result': 'success!'})
-//   })
 
 module.exports = router;
