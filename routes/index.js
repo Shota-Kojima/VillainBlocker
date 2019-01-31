@@ -1,8 +1,15 @@
 var router = require("express").Router();
 const fs = require('fs');
-const Request = require('request');
+const line = require('@line/bot-sdk');
+const moment = require('moment');
+const config = require('config');
 const multer = require('multer')
 var upload = multer({ dest: './uploads/' });
+
+const LineData = {
+    channelSecret: config.get('Line.CHANNELSECRET'),
+    channelAccessToken: config.get('Line.ACCESSTOKEN')
+};
 
 //get 
 router.get("/", (req, res) => {
