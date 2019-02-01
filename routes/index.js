@@ -34,11 +34,11 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         if (err) {
           throw err;
         }
-        // data = returnMsg();
-        var data = {
-            type: 'text',
-            text: 'hello, world',
-          }
+        data = returnMsg(targetPath);
+        // var data = {
+        //     type: 'text',
+        //     text: 'hello, world',
+        //   }
         client.pushMessage("U872741bbbd8e5f3693c938f0111ca98a",data);
         res.send('File uploaded to: ' + targetPath + ' - ' + req.files.data[0].size + ' bytes');
       });
@@ -49,7 +49,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
 //返信するやつ
 //----------------------------------------------
 
-function returnMsg(){
+function returnMsg(url){
     var a = [
         {  
             "type": "flex",
@@ -58,7 +58,8 @@ function returnMsg(){
                 "type": "bubble",
                 "hero": {
                     "type": "image",
-                    "url": "https://cdn.discordapp.com/attachments/441216746448486402/534993065853845504/DSCF2712.jpg",
+                    // "url": "https://cdn.discordapp.com/attachments/441216746448486402/534993065853845504/DSCF2712.jpg",
+                    "url":url,
                     "size": "full",
                     "aspectRatio": "20:13",
                     "aspectMode": "cover",

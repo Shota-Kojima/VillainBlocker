@@ -1,8 +1,7 @@
 {
     // Customer module configs
     "Line": {
-      "ACCESSTOKEN":"d5rDqHuaVU5O5HG7044PQs9qsolYVl3ZjQ+V++ckCVuY6tlbYAeNOYQei+b5ad2z8Nuh6tVJXMCWxUarCyj0Y5DM4FIPXL7nHxVBwz7FpegxTMQy+7CgdFIm8R7M60AtRj+mT+bgaADmkQjIKScZYAdB04t89/1O/w1cDnyilFU=",
-      "CHANNELSECRET":"3d3de417f3e2c55cb97251eb4504b6cd",
-      "Webhook":"1aad938d.ngrok.io"
+      "ACCESSTOKEN":"0gqqvtckIdKaInPU38YyxzGmYt4YayyFmU69uMWy2DaAHVmhleTYAja/cDEdwzv7TmBc3Go3vfB6jc+kuXJ3gyLZ5mxIqrwqk1J+P8oEK2bwz68BGAuWdxnmkq8PFwcx00y3fZyJG7AfW7JBanIUnQdB04t89/1O/w1cDnyilFU=",
+      "CHANNELSECRET":"f1bffde4d2135507d3e07bdf69693be6"
     }
 }
