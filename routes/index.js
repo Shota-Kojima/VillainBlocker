@@ -39,7 +39,11 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         //     type: 'text',
         //     text: 'hello, world',
         //   }
+        console.log("-----------------------------------------");
+        console.log("返信 START");
+        console.log("-----------------------------------------");
         client.pushMessage("U872741bbbd8e5f3693c938f0111ca98a",data);
+        
         res.send('File uploaded to: ' + targetPath + ' - ' + req.files.data[0].size + ' bytes');
       });
     });
@@ -50,6 +54,9 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
 //----------------------------------------------
 
 function returnMsg(url){
+    console.log("-----------------------------------------");
+    console.log("returnMsg START");
+    console.log("-----------------------------------------");
     var a = [
         {  
             "type": "flex",
