@@ -24,7 +24,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
     var filename = req.files.data[0].filename;
     var originalname = req.files.data[0].originalname;
     var targetPath = './uploads/' + originalname;
-    var url = "https://villainblocker.azurewebsites.net/uploads/" + filename
+    var url = "https://villainblocker.scm.azurewebsites.net/dev/wwwroot/uploads/" + filename
     console.log(path, filename, originalname);
 
     fs.rename(path, targetPath, function(err) {
@@ -46,6 +46,9 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         client.pushMessage("U872741bbbd8e5f3693c938f0111ca98a",data);
 
         res.send('File uploaded to: ' + targetPath + ' - ' + req.files.data[0].size + ' bytes');
+        console.log("-----------------------------------------");
+        console.log("処理　END");
+        console.log("-----------------------------------------");
       });
     });
   });
