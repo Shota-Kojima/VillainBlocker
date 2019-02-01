@@ -25,7 +25,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
     var originalname = req.files.data[0].originalname;
     var targetPath = './uploads/' + originalname;
     // console.log(targetPath);
-    var url = "https://villainblocker.scm.azurewebsites.net/dev/wwwroot/uploads/" + originalname
+    var url = "https://villainblocker.azurewebsites.net/uploads/" + originalname
     // console.log("URL:" + url);
     console.log(path, filename, originalname);
 
