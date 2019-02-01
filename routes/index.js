@@ -132,7 +132,7 @@ function returnMsg(url){
                             },
                             {
                                 "type": "text",
-                                "text": moment().add('hours', -3).format("MM月DD日HH時mm分"),
+                                "text": moment('hours', 9).format("MM月DD日HH時mm分"),
                                 
                                 "wrap": true,
                                 "color": "#000000",
