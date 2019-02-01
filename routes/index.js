@@ -104,7 +104,7 @@ function returnMsg(url){
                         },
                         {
                             "type": "text",
-                            "text": "80％",
+                            "text": "0％",
                             "size": "lg",
                             "color": "#FE0303",
                             "margin": "md",
@@ -132,7 +132,7 @@ function returnMsg(url){
                             },
                             {
                                 "type": "text",
-                                "text": moment().add('H', -9).format("MM月DD日HH時mm分"),
+                                "text": moment().add('H', -3).format("MM月DD日HH時mm分"),
                                 "wrap": true,
                                 "color": "#000000",
                                 "size": "lg",
