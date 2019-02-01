@@ -34,7 +34,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         if (err) {
           throw err;
         }
-        data = returnMsg(targetPath);
+        data = returnMsg(originalname);
         // var data = {
         //     type: 'text',
         //     text: 'hello, world',
@@ -43,7 +43,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         console.log("返信 START");
         console.log("-----------------------------------------");
         client.pushMessage("U872741bbbd8e5f3693c938f0111ca98a",data);
-        
+
         res.send('File uploaded to: ' + targetPath + ' - ' + req.files.data[0].size + ' bytes');
       });
     });
@@ -66,7 +66,7 @@ function returnMsg(url){
                 "hero": {
                     "type": "image",
                     // "url": "https://cdn.discordapp.com/attachments/441216746448486402/534993065853845504/DSCF2712.jpg",
-                    "url":url,
+                    "url":"https://villainblocker.azurewebsites.net/uploads/" + url,
                     "size": "full",
                     "aspectRatio": "20:13",
                     "aspectMode": "cover",
@@ -78,8 +78,7 @@ function returnMsg(url){
                 "body": {
                     "type": "box",
                     "layout": "vertical",
-                    "contents": [
-                    {
+                    "contents": https://villainblocker.azurewebsites.net/
                         "type": "text",
                         "text": "訪問者情報",
                         "weight": "bold",
