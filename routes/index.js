@@ -79,7 +79,7 @@ function returnMsg(url){
                 "body": {
                     "type": "box",
                     "layout": "vertical",
-                    "contents": https://villainblocker.azurewebsites.net/
+                    "contents": [{
                         "type": "text",
                         "text": "訪問者情報",
                         "weight": "bold",
