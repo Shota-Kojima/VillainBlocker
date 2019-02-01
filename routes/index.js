@@ -24,6 +24,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
     var filename = req.files.data[0].filename;
     var originalname = req.files.data[0].originalname;
     var targetPath = './uploads/' + originalname;
+    var url = "https://villainblocker.azurewebsites.net/uploads/" + filename
     console.log(path, filename, originalname);
 
     fs.rename(path, targetPath, function(err) {
@@ -34,7 +35,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         if (err) {
           throw err;
         }
-        data = returnMsg(originalname);
+        data = returnMsg(url);
         // var data = {
         //     type: 'text',
         //     text: 'hello, world',
@@ -66,7 +67,7 @@ function returnMsg(url){
                 "hero": {
                     "type": "image",
                     // "url": "https://cdn.discordapp.com/attachments/441216746448486402/534993065853845504/DSCF2712.jpg",
-                    "url":"https://villainblocker.azurewebsites.net/uploads/" + url,
+                    "url": url,
                     "size": "full",
                     "aspectRatio": "20:13",
                     "aspectMode": "cover",
