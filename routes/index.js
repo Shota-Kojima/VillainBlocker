@@ -45,9 +45,20 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         console.log("-----------------------------------------");
         console.log("返信 START");
         console.log("-----------------------------------------");
+        //LINE送信
         client.pushMessage("U872741bbbd8e5f3693c938f0111ca98a",data);
-
+        //Pythonに受け付けたReturnを返す
         res.send('File uploaded to: ' + targetPath + ' - ' + req.files.data[0].size + ' bytes');
+
+        console.log("-----------------------------------------");
+        console.log("画像削除 START");
+        console.log("-----------------------------------------");
+        fs.unlink(url, function (err) {
+            console.log("unlinkError")
+        });
+        console.log("-----------------------------------------");
+        console.log("画像削除 END");
+        console.log("-----------------------------------------");
         console.log("-----------------------------------------");
         console.log("処理　END");
         console.log("-----------------------------------------");
