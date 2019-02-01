@@ -78,7 +78,8 @@ function returnMsg(url){
                     "aspectMode": "cover",
                     "action": {
                         "type": "uri",
-                        "uri": "http://linecorp.com/"
+                        // "uri": "http://linecorp.com/"
+                        "uri":url
                     }
                 },
                 "body": {
