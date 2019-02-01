@@ -24,7 +24,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
     var filename = req.files.data[0].filename;
     var originalname = req.files.data[0].originalname;
     var targetPath = './uploads/' + originalname;
-    var url = "https://villainblocker.scm.azurewebsites.net/dev/wwwroot/uploads/" + originalname
+    // var url = "https://villainblocker.scm.azurewebsites.net/dev/wwwroot/uploads/" + originalname
     console.log("URL:" + url);
     console.log(path, filename, originalname);
 
@@ -36,7 +36,7 @@ router.post('/', upload.fields([ { name: 'data' } ]), function(req, res, next) {
         if (err) {
           throw err;
         }
-        data = returnMsg(url);
+        data = returnMsg(targetPath);
         // var data = {
         //     type: 'text',
         //     text: 'hello, world',
